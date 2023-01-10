@@ -1,11 +1,14 @@
+import { useSelector } from "react-redux";
+import Task from "./children/Task";
+
 const TodoList = () => {
+   const todos = useSelector(state => state.todos.todos)
+
    return (
-      <ul className="px-6 mt-5">
-         <li className="px-3 flex gap-5 border border-teal-500 text-teal-500 ">
-            <span className="flex-auto">task</span>
-            <button className="flex-0">delete</button>
-            <button className="flex-0">edit</button>
-         </li>
+      <ul className="px-6 mt-5 flex flex-col gap-3">
+         {
+            todos.map(item => <Task item={item} key={item.id} />)
+         }
       </ul>
    );
 }
